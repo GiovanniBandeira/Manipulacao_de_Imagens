@@ -4,10 +4,10 @@
 
 *Fazendo com que fiquem:*
 
-*Com outras cores ou sem cor
+* Com outras cores ou sem cor
 
-*Cores invertidas
+* Cores invertidas
 
-*Sem background
+* Sem background
 
-*Com backgrounda trocado
+* Com backgrounda trocado
