@@ -2,12 +2,14 @@
 
 ### Um programa em Java que mexe com imagens.
 
-*Fazendo com que fiquem:*
+*Fazendo:*
 
-* Com outras cores ou sem cor
+* Auterações de cores
 
-* Cores invertidas
+* Inversão
 
-* Sem background
+* Retirar background
 
-* Com backgrounda trocado
+* Retirar e colocar um novo backgrounda
+
+* Adicionar imagens png sobre outras imagens
