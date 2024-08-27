@@ -35,8 +35,9 @@ public class ChromaKey_com_Fundo {
                 int blue = color.getBlue();
 
                 // Cor de fundo da imagem (64, 254, 0)
-                // Declarei essas cores de funco para conseguir remover o máximo do chorma que puder (<=90 e >= 180)
-
+                // Declarei essas cores (<=90 e >= 180) de funco para conseguir remover o máximo do chorma que puder
+                
+                // Caso queira retirar outra cor, será necessario a modificação do RBG do if abaixo
                 if (red <= 90 && green >= 180) {
                     imagem.setRGB(lin, col, new Color(0, 0, 0, 0).getRGB());
                 } else {
@@ -45,12 +46,15 @@ public class ChromaKey_com_Fundo {
             }
         }
 
+        // Adicionar a imagem ao fundo
         for (int lin = 0; lin < w; lin++) {
             for (int col = 0; col < h; col++) {
 
+                // Encremetação de uma nova cor para verificar posteriomente se a imagem é vazia ou não
                 int rgb = imagem.getRGB(lin, col);
                 Color color = new Color(rgb, true);
 
+                // Verifica se o pixel é vazio ou não
                 if (color.getAlpha() == 0) {
                     imagem.setRGB(lin, col, imagemFundo.getRGB(lin, col));
 
