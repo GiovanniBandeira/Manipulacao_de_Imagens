@@ -33,7 +33,7 @@ public class Inversao {
                 int rgb = imagem.getRGB(lin, col);
                 Color color = new Color(rgb);
 
-                //O "255 -" é o cálculo para pegar a cor inversa das cores RGB
+                //O "255 -" é o cálculo para pegar a cor inversa do RGB
                 int red = 255 - color.getRed();
                 int green = 255 - color.getGreen();
                 int blue = 255 - color.getBlue();
