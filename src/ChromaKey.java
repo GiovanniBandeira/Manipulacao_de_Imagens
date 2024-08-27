@@ -29,8 +29,8 @@ public class ChromaKey {
                 int blue = color.getBlue();
 
                 // Cor de fundo da imagem (64, 254, 0)
-                // Declarei essas cores de funco para conseguir remover o máximo do chorma que puder (<=90 e >= 180)
-
+                // Declarei essas cores para conseguir remover o máximo do chorma que puder (<=100 e >= 150)
+                // Caso queira retirar outra cor, será necessario a modificação do RBG do if abaixo
                 if (red <= 100 && green >= 150) {
                     imagem.setRGB(lin, col, new Color(0, 0, 0, 0).getRGB());
                 } else {
