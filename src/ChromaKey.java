@@ -31,7 +31,7 @@ public class ChromaKey {
                 // Cor de fundo da imagem (64, 254, 0)
                 // Declarei essas cores de funco para conseguir remover o máximo do chorma que puder (<=90 e >= 180)
 
-                if (red <= 90 && green >= 180) {
+                if (red <= 100 && green >= 150) {
                     imagem.setRGB(lin, col, new Color(0, 0, 0, 0).getRGB());
                 } else {
                     imagem.setRGB(lin, col, rgb);
@@ -42,7 +42,7 @@ public class ChromaKey {
 //===============================================================================================
 
         // Geração de novo nome de arquivo
-        String srcFolder = "src\\ImagensGeradas\\ChromaKeyFundo\\";
+        String srcFolder = "src\\ImagensGeradas\\ChromaKey\\";
         File dir = new File(srcFolder);
         String baseName = "imagemNova";
         String extension = ".png";

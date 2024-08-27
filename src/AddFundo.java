@@ -1,69 +1,48 @@
 import javax.imageio.ImageIO;
-import javax.swing.*;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.Objects;
 
-public class ChromaKey_com_Fundo {
+public class AddFundo {
     public static void main(String[] args) throws IOException {
 
-        String img = "src\\ImagensFontes\\chromaKey.jpg";
+        String img = "src\\ImagensFontes\\imagem_Sem_Fundo.png";
         String imgf = "src\\ImagensFontes\\imagemFundo.jpg";
         BufferedImage imagemOriginal = ImageIO.read(new File(img));
         BufferedImage imagemFundo = ImageIO.read(new File(imgf));
 
-        int w = imagemOriginal.getWidth();
-        int h = imagemOriginal.getHeight();
-
+        int w = imagemFundo.getWidth();
+        int h = imagemFundo.getHeight();
 
         BufferedImage imagem = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
-        //Tamanho da imagem original para correção de tamanho
-        System.out.printf("%d %d", w, h);
-
-        // Aplicação do Chroma Key
-        for (int lin = 0; lin < w; lin++) {
-            for (int col = 0; col < h; col++) {
-
-                int rgb = imagemOriginal.getRGB(lin, col);
-                Color color = new Color(rgb, true);
-
-                int red = color.getRed();
-                int green = color.getGreen();
-                int blue = color.getBlue();
-
-                // Cor de fundo da imagem (64, 254, 0)
-                // Declarei essas cores de funco para conseguir remover o máximo do chorma que puder (<=90 e >= 180)
-
-                if (red <= 90 && green >= 180) {
-                    imagem.setRGB(lin, col, new Color(0, 0, 0, 0).getRGB());
-                } else {
-                    imagem.setRGB(lin, col, rgb);
-                }
-            }
-        }
-
+        // Aplicação da imagem PNG sobre a outra
         for (int lin = 0; lin < w; lin++) {
             for (int col = 0; col < h; col++) {
 
                 int rgb = imagem.getRGB(lin, col);
                 Color color = new Color(rgb, true);
 
-                if (color.getAlpha() == 0) {
-                    imagem.setRGB(lin, col, imagemFundo.getRGB(lin, col));
+                imagem.setRGB(lin, col, imagemFundo.getRGB(lin, col));
 
-                } else {
-                    imagem.setRGB(lin, col, rgb);
+                if (lin < 564) {
+                    int rgb1 = imagemOriginal.getRGB(lin, col);
+                    Color color1 = new Color(rgb1, true);
+                    if (color1.getAlpha() != 0){
+                        imagem.setRGB(lin, col, imagemOriginal.getRGB(lin, col));
+                    }
                 }
+
             }
         }
+
 
 //===============================================================================================
 
         // Geração de novo nome de arquivo
-        String srcFolder = "src\\ImagensGeradas\\ChromaKeyFundo\\";
+        String srcFolder = "src\\ImagensGeradas\\AddFundo\\";
         File dir = new File(srcFolder);
         String baseName = "imagemNova";
         String extension = ".png";
