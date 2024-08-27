@@ -23,6 +23,7 @@ public class Binarizacao {
                 int green = color.getGreen();
                 int blue = color.getBlue();
 
+                // Caso queira retirar outra  cor, será necessario modificar o rgb do if abaixo
                 // Retirar o vermelho da imagem
                 if (red >= 128 && green < 75 && blue < 75) {
                     imagem.setRGB(lin, col, Color.black.getRGB());
