@@ -18,9 +18,9 @@ public class AddFundo {
 
         System.out.printf("%d %d", w, h);
 
-        //Serve para implementar o Alpha na função Color
+        // Serve para implementar o Alpha na função Color
         BufferedImage imagem = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
-
+        
         // Aplicação da imagem PNG sobre a outra
         for (int lin = 0; lin < w; lin++) {
             for (int col = 0; col < h; col++) {
@@ -30,11 +30,12 @@ public class AddFundo {
 
                 imagem.setRGB(lin, col, imagemFundo.getRGB(lin, col));
 
-                //Coordena a posição desejada para aplicação da imagem e verifica se a imagem permanece dentro do limite
+                // Coordena a posição desejada para aplicação da imagem e verifica se a imagem permanece dentro do limite
                 //da Imagem de Fundo.
+                // Ao trocar de imagem que irar sobrepor a outra, será necessario adaptar a coordenada do if abaixo;
                 if (lin >= 606 && col >= 374 && lin < 606 + imagemOriginal.getWidth() && col < 374 + imagemOriginal.getHeight()) {
 
-                    //Encremetação de uma nova cor para verificar posteriomente se a imagem é vazia ou não
+                    // Encremetação de uma nova cor para verificar posteriomente se a imagem é vazia ou não
                     int rgb1 = imagemOriginal.getRGB(lin - 606, col - 374);
                     Color color1 = new Color(rgb1, true);
 
