@@ -8,7 +8,7 @@ import java.util.Objects;
 public class AddFundo {
     public static void main(String[] args) throws IOException {
 
-        String img = "src\\ImagensFontes\\imagem_Sem_Fundo.png";
+        String img = "src\\ImagensFontes\\carro.png";
         String imgf = "src\\ImagensFontes\\imagemFundo.jpg";
         BufferedImage imagemOriginal = ImageIO.read(new File(img));
         BufferedImage imagemFundo = ImageIO.read(new File(imgf));
@@ -16,6 +16,9 @@ public class AddFundo {
         int w = imagemFundo.getWidth();
         int h = imagemFundo.getHeight();
 
+        System.out.printf("%d %d", w, h);
+
+        //Serve para implementar o Alpha na função Color
         BufferedImage imagem = new BufferedImage(w, h, BufferedImage.TYPE_INT_ARGB);
 
         // Aplicação da imagem PNG sobre a outra
@@ -27,11 +30,17 @@ public class AddFundo {
 
                 imagem.setRGB(lin, col, imagemFundo.getRGB(lin, col));
 
-                if (lin < 564) {
-                    int rgb1 = imagemOriginal.getRGB(lin, col);
+                //Coordena a posição desejada para aplicação da imagem e verifica se a imagem permanece dentro do limite
+                //da Imagem de Fundo.
+                if (lin >= 606 && col >= 374 && lin < 606 + imagemOriginal.getWidth() && col < 374 + imagemOriginal.getHeight()) {
+
+                    //Encremetação de uma nova cor para verificar posteriomente se a imagem é vazia ou não
+                    int rgb1 = imagemOriginal.getRGB(lin - 606, col - 374);
                     Color color1 = new Color(rgb1, true);
-                    if (color1.getAlpha() != 0){
-                        imagem.setRGB(lin, col, imagemOriginal.getRGB(lin, col));
+
+                    // Verifica se o pixel da imagem não é transparente
+                    if (color1.getAlpha() != 0) {
+                        imagem.setRGB(lin, col, rgb1);
                     }
                 }
 
